@@ -1,0 +1,49 @@
+﻿<Window x:Name="WindowCollector" x:Class="Frontend.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Data Collector" Height="400.592" Width="759.694">
+    <Grid Height="350">
+        <TabControl HorizontalAlignment="Center" Height="311" Margin="0,10,0,0" VerticalAlignment="Top" Width="721" Background="#FFF3F3F3" BorderBrush="#FFC9CBD1" Foreground="#FFDADADA">
+            <TabItem Header="Config" RenderTransformOrigin="0.5,0.5" Background="#FFC9C0C0">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-15.946"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="3.286"/>
+                    </TransformGroup>
+                </TabItem.RenderTransform>
+                <Grid Margin="0,0,-16,-11" Height="290" VerticalAlignment="Top" Background="#FFE0DEDE">
+                    <Label x:Name="LabelConfigHeader" Content="Collector Config" HorizontalAlignment="Left" Height="31" Margin="297,1,0,0" VerticalAlignment="Top" Width="309" FontWeight="Bold" FontSize="14"/>
+                    <TextBox x:Name="TextBoxPLCName" HorizontalAlignment="Left" Height="25" Margin="35,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+                    <Label x:Name="LabelPLCName" Content="PLC Name" HorizontalAlignment="Left" Height="24" Margin="35,27,0,0" VerticalAlignment="Top" Width="107"/>
+                    <TextBox x:Name="TextBoxIPAddress" HorizontalAlignment="Left" Height="25" Margin="35,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+                    <Label x:Name="LabelIPAdress" Content="IP Address" HorizontalAlignment="Left" Height="24" Margin="35,86,0,0" VerticalAlignment="Top" Width="107"/>
+                    <TextBox x:Name="TextBoxSampleIntervall" HorizontalAlignment="Left" Height="25" Margin="35,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+                    <Label x:Name="LabelSampleInterval" Content="Sample Interval" HorizontalAlignment="Left" Height="24" Margin="35,144,0,0" VerticalAlignment="Top" Width="107"/>
+                    <TextBox x:Name="TextBoxPort" HorizontalAlignment="Left" Height="25" Margin="35,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+                    <Label x:Name="LabelPort" Content="Port" HorizontalAlignment="Left" Height="24" Margin="35,203,0,0" VerticalAlignment="Top" Width="107"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Data Collectors" RenderTransformOrigin="0.5,0.5" Background="#FFC9C0C0">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-11.535"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="2.347"/>
+                    </TransformGroup>
+                </TabItem.RenderTransform>
+                <Grid Background="#FFE5E5E5" Margin="-1,3,1,-3">
+                    <ListBox x:Name="listboxPLC" HorizontalAlignment="Left" Height="222" Margin="34,30,0,0" VerticalAlignment="Top" Width="217"/>
+                    <Button x:Name="buttonStartAll" Content="Start All" HorizontalAlignment="Left" Height="54" Margin="290,198,0,0" VerticalAlignment="Top" Width="70" Background="#FFC9C0C0" Click="ButtonStartAll_click"/>
+                    <Button Content="Stop All" HorizontalAlignment="Left" Height="54" Margin="375,198,0,0" VerticalAlignment="Top" Width="70" Background="#FFC9C0C0" Click="ButtonStopAll_click"/>
+                    <Button x:Name="buttonStart" Content="Start" HorizontalAlignment="Left" Height="54" Margin="290,130,0,0" VerticalAlignment="Top" Width="70" Background="#FFC9C0C0" Click="Button_StartOne"/>
+                    <Button x:Name="buttonStop" Content="Stop" HorizontalAlignment="Left" Height="54" Margin="375,130,0,0" VerticalAlignment="Top" Width="70" Background="#FFC9C0C0" Click="Button_StopOne"/>
+                </Grid>
+            </TabItem>
+           
+        </TabControl>
+
+    </Grid>
+</Window>
