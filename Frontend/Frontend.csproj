@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E09D0ADE-F9B3-4939-B329-09028E31FA1E}</ProjectGuid>
+    <ProjectGuid>{8D86BA20-4D16-4E2D-A8FD-17F7D09196A2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Frontend</RootNamespace>
@@ -53,20 +53,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="Config.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrontendStartScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.xaml.cs">
+      <DependentUpon>Config.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrontendStartScreen.xaml.cs">
+      <DependentUpon>FrontendStartScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,14 +100,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\PLCLayer.csproj">
-      <Project>{feb0abf3-4881-468f-a855-5b515084bc2a}</Project>
-      <Name>PLCLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataCollectors\DataCollectors.csproj">
-      <Project>{a3652b1c-12ba-4189-8938-41ecf830e513}</Project>
-      <Name>DataCollectors</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataObjects\DataObjects.csproj">
       <Project>{74b652a2-ac17-4d93-888e-faece9ef5199}</Project>
       <Name>DataObjects</Name>

@@ -18,7 +18,7 @@ using DataCollectors;
 using DataObjects;
 using System.Collections;
 
-namespace CollectorStarter
+namespace Frontend
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -26,19 +26,19 @@ namespace CollectorStarter
     public partial class MainWindow : Window
     {
         List<PLCInterface> listOfPLCs;
-        Dictionary<int, List<System.Threading.Thread>> runningThreads = new Dictionary<int, List<System.Threading.Thread>>();
+        Dictionary<int, List<System.Threading.Thread>> runningThreads = new Dictionary<int,List<System.Threading.Thread>>();        
 
         public MainWindow()
         {
-            InitializeComponent();
-            listOfPLCs = PLCHelper.LoadAllPLCsFromDB();
-            this.UpdateListBox();
-        }
-
+           InitializeComponent();
+           listOfPLCs = PLCHelper.LoadAllPLCsFromDB();
+           this.UpdateListBox();
+        }       
+        
         private PLCInterface loadPLCByConfigId(int configId)
         {
             PLCDBHandler PLCDBHandler = new PLCDBHandler();
-            return PLCHelper.LoadPLCByID(configId);
+            return PLCHelper.LoadPLCByID(configId);           
         }
 
         private void UpdateListBox()
@@ -46,18 +46,18 @@ namespace CollectorStarter
             listboxPLC.Items.Clear();
 
             foreach (PLCInterface plcInterface in listOfPLCs)
-            {
+            {                
                 ListBoxItem listBoxItem = new ListBoxItem();
                 listBoxItem.Content = plcInterface.GetPLCConfig().plcID.ToString() + "." + plcInterface.GetPLCConfig().plcName;
                 listBoxItem.Tag = plcInterface.GetPLCConfig().plcID;
-                listboxPLC.Items.Add(listBoxItem);
+                listboxPLC.Items.Add(listBoxItem);   
             }
             this.Show();
 
             this.SetColorOfListRunningBoxElements();
         }
 
-
+      
         #region Buttons
 
         //Start Button
@@ -70,7 +70,7 @@ namespace CollectorStarter
             PLCInterface plcInterface = GetPLCInterfaceFromList(plcID);
             this.StartOneWorkerThread(plcInterface);
             UpdateListBox();
-
+            
         }
 
         //Stop last Thread Button
@@ -95,7 +95,7 @@ namespace CollectorStarter
 
             UpdateListBox();
         }
-
+        
         private void ButtonStopAll_click(object sender, RoutedEventArgs e)
         {
             foreach (PLCInterface plcInterface in listOfPLCs)
@@ -107,7 +107,7 @@ namespace CollectorStarter
             UpdateListBox();
         }
 
-
+       
         #endregion
 
         #region helpers
@@ -135,7 +135,7 @@ namespace CollectorStarter
 
             throw new ArgumentException("Invalide plcID given");
         }
-
+        
         private void StartOneWorkerThread(PLCInterface plcInterface)
         {
             DataCollector dataCollector = new DataCollector(plcInterface);

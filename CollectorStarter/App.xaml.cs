@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CollectorStarter
+namespace Frontend
 {
     /// <summary>
     /// Interaktionslogik für "App.xaml"
