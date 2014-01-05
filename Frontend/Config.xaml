@@ -21,9 +21,9 @@
             <Label x:Name="LabelPort" Content="Port" Height="30" Margin="34,235,0,0" VerticalAlignment="Top" Width="107" FontFamily="Segoe Print" HorizontalAlignment="Left" FontWeight="Bold"/>
             <ComboBox x:Name="ComboBoxPlcType" Height="25" Margin="190,88,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" FontWeight="Bold"/>
             <ListBox x:Name="ListBoxConfigs" HorizontalAlignment="Left" Height="142" Margin="366,88,0,0" VerticalAlignment="Top" Width="150"/>
-            <Button x:Name="ButtonSave" Content="SAVE" HorizontalAlignment="Left" Height="44" Margin="190,147,0,0" VerticalAlignment="Top" Width="150" Background="#FF98A3EC" FontFamily="Segoe Print"/>
-            <Button x:Name="ButtonDischarge" Content="DISCHARGE" HorizontalAlignment="Left" Height="44" Margin="190,218,0,0" VerticalAlignment="Top" Width="150" Background="#FF98A3EC" FontFamily="Segoe Print"/>
-            <Button x:Name="ButtonDischarge_Copy" Content="CHANGE CONFIG" HorizontalAlignment="Left" Height="44" Margin="366,245,0,0" VerticalAlignment="Top" Width="150" Background="#FF98A3EC" FontFamily="Segoe Print"/>
+            <Button x:Name="ButtonSave" Content="SAVE" HorizontalAlignment="Left" Height="44" Margin="190,147,0,0" VerticalAlignment="Top" Width="150" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonSave_Click"/>
+            <Button x:Name="ButtonDischarge" Content="DISCHARGE" HorizontalAlignment="Left" Height="44" Margin="190,218,0,0" VerticalAlignment="Top" Width="150" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonDischarge_Click"/>
+            <Button x:Name="ButtonDischarge_Copy" Content="CHANGE CONFIG" HorizontalAlignment="Left" Height="44" Margin="366,245,0,0" VerticalAlignment="Top" Width="150" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonDischarge_Copy_Click"/>
             <Label x:Name="LabelPLCType" Content="PLC Type" Height="30" Margin="190,56,0,0" VerticalAlignment="Top" Width="107" FontFamily="Segoe Print" HorizontalAlignment="Left" FontWeight="Bold"/>
 
         </Grid>

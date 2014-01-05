@@ -21,8 +21,17 @@ namespace Frontend
     /// </summary>
     public partial class Config : Window
     {
-        PLCDBHandler dbHandler;
-        List<PLCConfig> listOfPlcConfig;
+        private PLCDBHandler dbHandler;
+        private List<PLCConfig> listOfPlcConfig;
+        private bool ConfigChanged = false;
+        private ListBoxItem selectedItem;
+
+         //ListBoxItem selectedItem = (ListBoxItem)listboxPLC.SelectedItem;
+         //   if (selectedItem == null) return;
+
+         //   int plcID = (int)selectedItem.Tag;
+         //   PLCInterface plcInterface = GetPLCInterfaceFromList(plcID);
+         //   this.StartOneWorkerThread(plcInterface);
         
         public Config()
         {
@@ -46,18 +55,92 @@ namespace Frontend
             
             }
 
-            //listboxPLC.Items.Clear();
+        }
 
-            //foreach (PLCInterface plcInterface in listOfPLCs)
-            //{
-            //    ListBoxItem listBoxItem = new ListBoxItem();
-            //    listBoxItem.Content = plcInterface.GetPLCConfig().plcID.ToString() + "." + plcInterface.GetPLCConfig().plcName;
-            //    listBoxItem.Tag = plcInterface.GetPLCConfig().plcID;
-            //    listboxPLC.Items.Add(listBoxItem);
-            //}
-            //this.Show();
+        private void UpdatePLCConfig()
+        { 
+        
+        }
 
-            //this.SetColorOfListRunningBoxElements();
+        private bool CheckInput()
+        {
+            bool validInputs = true;
+
+            validInputs &= CheckIfPLCNameInputIsValid();
+            validInputs &= CheckIfIPAdressInputIsValid();
+            validInputs &= CheckIfIntervalInputIsValid();
+            validInputs &= CheckIfPortInputIsValid();
+            validInputs &= CheckIfPLCTypeInputIsValid();
+
+            return validInputs;
+        }
+
+        private PLCConfig CreatePlcConfigObjectWithInputData()
+        {
+            PLCConfig plcConfig = new PLCConfig();
+
+            plcConfig.plcName = TextBoxPLCName.Text;
+            plcConfig.ipAddress = TextBoxIPAddress.Text;
+            plcConfig.interval = Convert.ToInt32(TextBoxSampleIntervall.Text);
+            plcConfig.plcPort = Convert.ToInt32(TextBoxPort.Text);
+            plcConfig.type = ComboBoxPlcType.Text;
+
+            return plcConfig;
+        }
+
+        private bool CheckIfPLCNameInputIsValid() 
+        {
+            return true;
+        }
+
+        private bool CheckIfIPAdressInputIsValid() 
+        {
+            return true;
+        }
+
+        private bool CheckIfIntervalInputIsValid() 
+        {
+            return true;
+        }
+
+        private bool CheckIfPortInputIsValid() 
+        {
+            return true;
+        }
+
+        private bool CheckIfPLCTypeInputIsValid() 
+        {
+            return true;
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            PLCConfig plcConfig ;
+
+            if (CheckInput())
+            {
+                plcConfig = CreatePlcConfigObjectWithInputData();
+
+                if (!ConfigChanged)
+                {
+                     dbHandler.UpdatePLCConfigInDB(plcConfig);
+                }
+                else
+                {
+                    dbHandler.WritePLCConfigToDB(plcConfig);
+                }
+            }
+
+        }
+
+        private void ButtonDischarge_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigChanged = false;
+        }
+
+        private void ButtonDischarge_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            selectedItem = (ListBoxItem)ListBoxConfigs.SelectedItem;
         }
     }
 }

@@ -193,6 +193,10 @@ namespace DBHandler
 
         }
 
+        public void UpdatePLCConfigInDB(PLCConfig plcConfig)
+        { 
+        }
+
         /// <summary>
         /// This function writes Process -Datas from the PLC into the Database
         /// </summary>
