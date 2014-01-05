@@ -24,25 +24,22 @@ namespace Frontend
         private PLCDBHandler dbHandler;
         private List<PLCConfig> listOfPlcConfig;
         private bool ConfigChanged = false;
-        private ListBoxItem selectedItem;
-
-         //ListBoxItem selectedItem = (ListBoxItem)listboxPLC.SelectedItem;
-         //   if (selectedItem == null) return;
-
-         //   int plcID = (int)selectedItem.Tag;
-         //   PLCInterface plcInterface = GetPLCInterfaceFromList(plcID);
-         //   this.StartOneWorkerThread(plcInterface);
+        private ListBoxItem selectedItemPLCConfigConfigTabItem;
+        private ListBoxItem selectedItemPLCConfigVariableConfigTabItem;
+       
         
         public Config()
         {
             InitializeComponent();
             dbHandler = new PLCDBHandler();
-            UpdateListBoxConfigs();
+            UpdateListBoxConfigs(ListBoxConfigs);
             ComboBoxPlcType.Items.Add("Siemens 300");
             ComboBoxPlcType.Items.Add("Simulator");
         }
 
-        private void UpdateListBoxConfigs()
+        #region private functions
+
+        private void UpdateListBoxConfigs(ListBox ListBox)
         {
             listOfPlcConfig = dbHandler.GetListOfPLCConfigurations();
 
@@ -51,7 +48,7 @@ namespace Frontend
                 ListBoxItem lbItem = new ListBoxItem();
                 lbItem.Content = plcConfig.plcName;
                 lbItem.Tag = plcConfig.plcID;
-                ListBoxConfigs.Items.Add(lbItem);
+                ListBox.Items.Add(lbItem);
             
             }
 
@@ -60,19 +57,6 @@ namespace Frontend
         private void UpdatePLCConfig()
         { 
         
-        }
-
-        private bool CheckInput()
-        {
-            bool validInputs = true;
-
-            validInputs &= CheckIfPLCNameInputIsValid();
-            validInputs &= CheckIfIPAdressInputIsValid();
-            validInputs &= CheckIfIntervalInputIsValid();
-            validInputs &= CheckIfPortInputIsValid();
-            validInputs &= CheckIfPLCTypeInputIsValid();
-
-            return validInputs;
         }
 
         private PLCConfig CreatePlcConfigObjectWithInputData()
@@ -88,30 +72,51 @@ namespace Frontend
             return plcConfig;
         }
 
-        private bool CheckIfPLCNameInputIsValid() 
-        {
-            return true;
-        }
+            #region ValidCheckFunctions
 
-        private bool CheckIfIPAdressInputIsValid() 
-        {
-            return true;
-        }
+            private bool CheckInput()
+            {
+                bool validInputs = true;
 
-        private bool CheckIfIntervalInputIsValid() 
-        {
-            return true;
-        }
+                validInputs &= CheckIfPLCNameInputIsValid();
+                validInputs &= CheckIfIPAdressInputIsValid();
+                validInputs &= CheckIfIntervalInputIsValid();
+                validInputs &= CheckIfPortInputIsValid();
+                validInputs &= CheckIfPLCTypeInputIsValid();
 
-        private bool CheckIfPortInputIsValid() 
-        {
-            return true;
-        }
+                return validInputs;
+            }
 
-        private bool CheckIfPLCTypeInputIsValid() 
-        {
-            return true;
-        }
+            private bool CheckIfPLCNameInputIsValid() 
+            {
+                return true;
+            }
+
+            private bool CheckIfIPAdressInputIsValid() 
+            {
+                return true;
+            }
+
+            private bool CheckIfIntervalInputIsValid() 
+            {
+                return true;
+            }
+
+            private bool CheckIfPortInputIsValid() 
+            {
+                return true;
+            }
+
+            private bool CheckIfPLCTypeInputIsValid() 
+            {
+                return true;
+            }
+
+            #endregion
+
+        #endregion
+
+        #region Buttons
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
@@ -138,9 +143,30 @@ namespace Frontend
             ConfigChanged = false;
         }
 
-        private void ButtonDischarge_Copy_Click(object sender, RoutedEventArgs e)
+        private void ButtonChangeConfig_Click(object sender, RoutedEventArgs e)
         {
-            selectedItem = (ListBoxItem)ListBoxConfigs.SelectedItem;
+            
         }
+
+        private void ButtonVariableSetup_Click(object sender, RoutedEventArgs e)
+        {
+            TabControlConfig.SelectedIndex = 1;
+            UpdateListBoxConfigs(ListBoxPLCConfigInVariableTabItem);
+            
+        }
+
+        #endregion
+
+        private void ListBoxPLCConfigInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedItemPLCConfigVariableConfigTabItem = (ListBoxItem)ListBoxPLCConfigInVariableTabItem.SelectedItem; 
+        }
+
+        private void ListBoxConfigs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedItemPLCConfigConfigTabItem = (ListBoxItem)ListBoxConfigs.SelectedItem;
+        }
+
+
     }
 }
