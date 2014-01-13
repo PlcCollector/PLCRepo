@@ -80,42 +80,82 @@ namespace Frontend
             {
                 bool validInputs = true;
 
-                validInputs &= CheckIfPLCNameInputIsValid();
-                validInputs &= CheckIfIPAdressInputIsValid();
-                validInputs &= CheckIfIntervalInputIsValid();
-                validInputs &= CheckIfPortInputIsValid();
-                validInputs &= CheckIfPLCTypeInputIsValid();
+                validInputs &= CheckIfPLCNameInputIsValid(TextBoxPLCName.Text);
+                validInputs &= CheckIfIPAdressInputIsValid(TextBoxIPAddress.Text);
+                validInputs &= CheckIfIntervalInputIsValid(TextBoxSampleIntervall.Text);
+                validInputs &= CheckIfPortInputIsValid(TextBoxPort.Text);
+                validInputs &= CheckIfPLCTypeInputIsValid(ComboBoxPlcType.Text);
 
                 return validInputs;
             }
 
-            private bool CheckIfPLCNameInputIsValid() 
+            private bool CheckIfPLCNameInputIsValid(string plcName) 
             {
+                if (string.IsNullOrEmpty(plcName) ||!(Encoding.UTF8.GetByteCount(plcName).Equals(plcName.Length))  )
+                {
+                    MessageBox.Show("Der PLC Name ist Leer oder enthält Sonderzeichen", "Fehler PLC Name");
+                    return false;
+                }
+
+                if(plcName.Length > 20)
+                {
+                    MessageBox.Show("Der PLC Name ist zu lang", "Fehler PLC Name");
+                    return false;
+                }
                 return true;
             }
 
-            private bool CheckIfIPAdressInputIsValid() 
+            private bool CheckIfIPAdressInputIsValid(string ipAdress) 
             {
-                string ipAdress;
-
                 ipAdress = TextBoxIPAddress.Text;
 
                 return CheckIFStringIsAIPAdress(ipAdress);
                 
             }
 
-            private bool CheckIfIntervalInputIsValid() 
+            private bool CheckIfIntervalInputIsValid(string intervall) 
             {
+                int resultTryParse;
+                bool isNumber = int.TryParse(intervall, out resultTryParse);
+
+                if (resultTryParse > 86400000 || intervall.Length >= 9)   //Limit Sample Intervall = 86400000 ms = 1Day
+                {
+                    MessageBox.Show("Das Intervall ist zu groß. max. 1Tag", "Fehler Intervallwert");
+                }
+
+                if (!isNumber)
+                {
+                    MessageBox.Show("Das Intervall ist kein ganzzahliger Wert ", "Fehler Intervallwert");
+                    return false;
+                }
+                
                 return true;
             }
 
-            private bool CheckIfPortInputIsValid() 
+            private bool CheckIfPortInputIsValid(string port) 
             {
+                int resultTryParse;
+                bool isNumber = int.TryParse(port, out resultTryParse);
+
+                if (!isNumber)
+                {
+                    MessageBox.Show("Der Port muss aus einer ganzen Zahl bestehen", "Fehler Eingabe PORT");
+                    return false;
+                }
+                if (resultTryParse <= 0 || resultTryParse > 65535)   // available Ports 0 - 65535
+                {
+                    MessageBox.Show("Dieser Port steht nicht zur Verfügung. Es stehen nur Ports von 0 - 65535 zur Verfügung", "Fehler Eingabe PORT");
+                }
                 return true;
             }
 
-            private bool CheckIfPLCTypeInputIsValid() 
+            private bool CheckIfPLCTypeInputIsValid(string plcInputType) 
             {
+                if (string.IsNullOrEmpty(plcInputType))
+                {
+                    MessageBox.Show("Es wurde kein PLC-Typ ausgewählt", "Fehler PLC-Typ");
+                    return false;
+                }
                 return true;
             }
 
@@ -123,29 +163,26 @@ namespace Frontend
         {
             char point = '.';
             bool isValid = false;
+            int i, resultTryParse;
+            string[] adressParts = ipAdress.Split('.');
 
-            for(int i = 0; i < ipAdress.Length; i++)
+            for (i = 0; i < adressParts.Length; i++)
             {
-                if (ipAdress.Length <= 16)
+                if (adressParts.Length == 4 && int.TryParse(adressParts[i],out resultTryParse) && resultTryParse <255 )
                 {
-                    if (i % 4 == 0)
-                    {
-                        isValid = char.Equals(ipAdress[i], point);
-                    }
-                    else if (i % 4 > 0)
-                    {
-                        isValid = Char.IsDigit(ipAdress[i]);
-                    }
-                    else
-                    {
-                        isValid = false;
-                    }
+                    isValid = true;
                 }
                 else 
                 {
+                    isValid = false;
+                }
+                if (!isValid)
+                {
+                    MessageBox.Show("IP-Adresse wurde falsch eingegeben!! ", "Fehler IP-Adresse");
                     break;
-                }       
+                }
             }
+            
             return isValid;
         }
 

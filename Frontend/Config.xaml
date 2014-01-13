@@ -21,13 +21,13 @@
                         <ColumnDefinition Width="21*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="LabelConfigHeader" Content="Collector Config" HorizontalAlignment="Left" Height="40" Margin="207,1,0,0" VerticalAlignment="Top" Width="309" FontWeight="Bold" FontSize="18" FontFamily="Segoe Print" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="TextBoxPLCName" Height="25" Margin="34,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" HorizontalAlignment="Left" FontWeight="Bold"/>
+                    <TextBox x:Name="TextBoxPLCName" Height="25" Margin="34,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" HorizontalAlignment="Left" FontWeight="Bold" ToolTip="Name der Steuerung eingeben (max 20 Zeichen)"/>
                     <Label x:Name="LabelPLCName" Content="PLC Name" Height="30" Margin="34,56,0,0" VerticalAlignment="Top" Width="107" FontFamily="Segoe Print" HorizontalAlignment="Left" FontWeight="Bold"/>
-                    <TextBox x:Name="TextBoxIPAddress" Height="25" Margin="34,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" HorizontalAlignment="Left" FontWeight="Bold"/>
+                    <TextBox x:Name="TextBoxIPAddress" Height="25" Margin="34,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" HorizontalAlignment="Left" FontWeight="Bold" ToolTip="IP Adresse der SPS"/>
                     <Label x:Name="LabelIPAdress" Content="IP Address" Height="30" Margin="34,118,0,0" VerticalAlignment="Top" Width="107" FontFamily="Segoe Print" HorizontalAlignment="Left" FontWeight="Bold"/>
-                    <TextBox x:Name="TextBoxSampleIntervall" Height="25" Margin="34,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" HorizontalAlignment="Left" FontWeight="Bold"/>
+                    <TextBox x:Name="TextBoxSampleIntervall" Height="25" Margin="34,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" HorizontalAlignment="Left" FontWeight="Bold" ToolTip="Wert in Millisekunden"/>
                     <Label x:Name="LabelSampleInterval" Content="Sample Interval" Height="30" Margin="34,176,0,0" VerticalAlignment="Top" Width="107" FontFamily="Segoe Print" HorizontalAlignment="Left" FontWeight="Bold"/>
-                    <TextBox x:Name="TextBoxPort" Height="25" Margin="34,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" HorizontalAlignment="Left" FontWeight="Bold"/>
+                    <TextBox x:Name="TextBoxPort" Height="25" Margin="34,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" HorizontalAlignment="Left" FontWeight="Bold" ToolTip="Port der SPS"/>
                     <Label x:Name="LabelPort" Content="Port" Height="30" Margin="34,235,0,0" VerticalAlignment="Top" Width="107" FontFamily="Segoe Print" HorizontalAlignment="Left" FontWeight="Bold"/>
                     <ComboBox x:Name="ComboBoxPlcType" Height="25" Margin="190,88,0,0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" FontWeight="Bold"/>
                     <ListBox x:Name="ListBoxConfigs" HorizontalAlignment="Left" Height="142" Margin="366,88,0,0" VerticalAlignment="Top" Width="201" Grid.ColumnSpan="2" SelectionChanged="ListBoxConfigs_SelectionChanged"/>
