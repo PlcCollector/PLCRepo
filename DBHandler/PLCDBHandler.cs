@@ -145,7 +145,7 @@ namespace DBHandler
             command.CommandText = "SELECT* FROM plcconfig";
                      
             MySqlDataReader Reader;
-
+            
             try
             {
                 this.OpenConnection();

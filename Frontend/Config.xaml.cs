@@ -59,6 +59,8 @@ namespace Frontend
         
         }
 
+
+
         private PLCConfig CreatePlcConfigObjectWithInputData()
         {
             PLCConfig plcConfig = new PLCConfig();
@@ -94,7 +96,12 @@ namespace Frontend
 
             private bool CheckIfIPAdressInputIsValid() 
             {
-                return true;
+                string ipAdress;
+
+                ipAdress = TextBoxIPAddress.Text;
+
+                return CheckIFStringIsAIPAdress(ipAdress);
+                
             }
 
             private bool CheckIfIntervalInputIsValid() 
@@ -111,6 +118,36 @@ namespace Frontend
             {
                 return true;
             }
+
+        private bool CheckIFStringIsAIPAdress(string ipAdress)
+        {
+            char point = '.';
+            bool isValid = false;
+
+            for(int i = 0; i < ipAdress.Length; i++)
+            {
+                if (ipAdress.Length <= 16)
+                {
+                    if (i % 4 == 0)
+                    {
+                        isValid = char.Equals(ipAdress[i], point);
+                    }
+                    else if (i % 4 > 0)
+                    {
+                        isValid = Char.IsDigit(ipAdress[i]);
+                    }
+                    else
+                    {
+                        isValid = false;
+                    }
+                }
+                else 
+                {
+                    break;
+                }       
+            }
+            return isValid;
+        }
 
             #endregion
 
@@ -157,6 +194,8 @@ namespace Frontend
 
         #endregion
 
+        #region Listboxes
+
         private void ListBoxPLCConfigInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedItemPLCConfigVariableConfigTabItem = (ListBoxItem)ListBoxPLCConfigInVariableTabItem.SelectedItem; 
@@ -167,6 +206,7 @@ namespace Frontend
             selectedItemPLCConfigConfigTabItem = (ListBoxItem)ListBoxConfigs.SelectedItem;
         }
 
+        #endregion
 
     }
 }
