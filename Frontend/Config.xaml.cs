@@ -23,10 +23,10 @@ namespace Frontend
     {
         private PLCDBHandler dbHandler;
         private List<PLCConfig> listOfPlcConfig;
-        private bool ConfigChanged = false;
+        private bool IsConfigForUpdate = false;
         private ListBoxItem selectedItemPLCConfigConfigTabItem;
         private ListBoxItem selectedItemPLCConfigVariableConfigTabItem;
-       
+        private PLCConfig loadedPLCConfigFromDB;
         
         public Config()
         {
@@ -55,8 +55,15 @@ namespace Frontend
         }
 
         private void UpdatePLCConfig()
-        { 
-        
+        {
+            PLCConfig plcConfig = new PLCConfig();
+
+            if (CheckInput())
+            {
+                plcConfig = CreatePlcConfigObjectWithInputData();
+
+                dbHandler.UpdatePLCConfigInDB(plcConfig);
+            }
         }
 
 
@@ -72,6 +79,28 @@ namespace Frontend
             plcConfig.type = ComboBoxPlcType.Text;
 
             return plcConfig;
+        }
+
+        private void FillTheTextBoxesWithTheConfigToChange(ListBoxItem lbItem)
+        {
+            PLCConfig plcConfig = new PLCConfig();
+
+            plcConfig = dbHandler.GetPLCConfigByID((int)lbItem.Tag);
+
+            TextBoxPLCName.Text = plcConfig.plcName;
+            TextBoxIPAddress.Text = plcConfig.ipAddress;
+            TextBoxSampleIntervall.Text = Convert.ToString(plcConfig.interval);
+            TextBoxPort.Text = Convert.ToString(plcConfig.plcPort);
+
+            this.loadedPLCConfigFromDB = plcConfig;
+        }
+
+        private void CleanConfigTextBoxes()
+        {
+            TextBoxPLCName.Text = "";
+            TextBoxIPAddress.Text = "";
+            TextBoxSampleIntervall.Text = "";
+            TextBoxPort.Text = "";
         }
 
             #region ValidCheckFunctions
@@ -159,7 +188,7 @@ namespace Frontend
                 return true;
             }
 
-        private bool CheckIFStringIsAIPAdress(string ipAdress)
+            private bool CheckIFStringIsAIPAdress(string ipAdress)
         {
             char point = '.';
             bool isValid = false;
@@ -200,9 +229,10 @@ namespace Frontend
             {
                 plcConfig = CreatePlcConfigObjectWithInputData();
 
-                if (!ConfigChanged)
+                if (IsConfigForUpdate)
                 {
-                     dbHandler.UpdatePLCConfigInDB(plcConfig);
+                     dbHandler.UpdatePLCConfigInDB(loadedPLCConfigFromDB);
+                     IsConfigForUpdate = false;
                 }
                 else
                 {
@@ -214,12 +244,17 @@ namespace Frontend
 
         private void ButtonDischarge_Click(object sender, RoutedEventArgs e)
         {
-            ConfigChanged = false;
+            IsConfigForUpdate = false;
+            CleanConfigTextBoxes();
         }
 
         private void ButtonChangeConfig_Click(object sender, RoutedEventArgs e)
         {
-            
+            //Check if lbItem is not null
+            FillTheTextBoxesWithTheConfigToChange((ListBoxItem)ListBoxConfigs.SelectedItem);
+
+            IsConfigForUpdate = true;
+            //todo
         }
 
         private void ButtonVariableSetup_Click(object sender, RoutedEventArgs e)
