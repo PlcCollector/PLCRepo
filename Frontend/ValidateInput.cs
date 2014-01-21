@@ -8,7 +8,8 @@ namespace Frontend
 {
     public static class ValidateInput
     {
-       
+        #region checksConfigPLC
+
         public static bool  CheckIfPLCNameInputIsValid(string plcName ,out string errorMessage) 
         {
             errorMessage = string.Empty;
@@ -104,5 +105,9 @@ namespace Frontend
             }
             return true;
         }
+
+        #endregion
+
+
     }
 }

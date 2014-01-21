@@ -9,7 +9,7 @@
                 <GradientStop Color="#FFC9C0C0" Offset="0.996"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TabControl x:Name="TabControlConfig" HorizontalAlignment="Center" Height="362" Margin="0" VerticalAlignment="Center" Width="719" >
+        <TabControl x:Name="TabControlConfig" HorizontalAlignment="Center" Height="362" Margin="0" VerticalAlignment="Center" Width="719" SizeChanged="TabControlConfig_SizeChanged" >
             <TabControl.Background>
                 <ImageBrush/>
             </TabControl.Background>
@@ -41,13 +41,18 @@
             </TabItem>
             <TabItem x:Name="TabItemVariableConfig" Header="Variable Config" Background="#FFC3BBBD" FontFamily="Segoe Print">
                     <Grid>
-                    <ListBox x:Name="ListBoxPLCConfigInVariableTabItem" Margin="21,55,496,62" SelectionChanged="ListBoxPLCConfigInVariableTabItem_SelectionChanged"/>
-                    <TextBox HorizontalAlignment="Left" Height="28" Margin="245,82,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="137"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Height="33" Margin="245,44,0,0" VerticalAlignment="Top" Width="137"/>
-                    <TextBox HorizontalAlignment="Left" Height="28" Margin="245,149,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="137"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Height="33" Margin="245,111,0,0" VerticalAlignment="Top" Width="137"/>
-                    <TextBox HorizontalAlignment="Left" Height="28" Margin="245,216,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="137"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Height="33" Margin="245,178,0,0" VerticalAlignment="Top" Width="137"/>
+                    <ListBox x:Name="ListBoxPLCConfigInVariableTabItem" Margin="21,55,496,29" SelectionChanged="ListBoxPLCConfigInVariableTabItem_SelectionChanged"/>
+                    <TextBox x:Name="TextBoxVariableName" HorizontalAlignment="Left" Height="28" Margin="272,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159"/>
+                    <Label x:Name="LabelVariableName" Content="Variable Name" HorizontalAlignment="Left" Height="33" Margin="272,61,0,0" VerticalAlignment="Top" Width="159"/>
+                    <TextBox x:Name="TextBoxDataBlock" HorizontalAlignment="Left" Height="28" Margin="272,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49"/>
+                    <Label x:Name="LabelDataBlock" Content="DB" HorizontalAlignment="Left" Height="33" Margin="272,128,0,0" VerticalAlignment="Top" Width="49"/>
+                    <TextBox x:Name="TextBoxStartByte" HorizontalAlignment="Left" Height="28" Margin="329,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49"/>
+                    <TextBox x:Name="TextboxStartBit" HorizontalAlignment="Left" Height="28" Margin="385,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49"/>
+                    <Label x:Name="LabelStartbyte" Content="Byte" HorizontalAlignment="Left" Height="33" Margin="329,128,0,0" VerticalAlignment="Top" Width="49"/>
+                    <Label x:Name="LabelStartBit" Content="Bit" HorizontalAlignment="Left" Height="33" Margin="382,128,0,0" VerticalAlignment="Top" Width="49"/>
+                    <ListBox x:Name="ListBoxPLCConfigInVariableTabItem_Copy" Margin="490,55,27,76" SelectionChanged="ListBoxPLCConfigInVariableTabItem_SelectionChanged"/>
+                    <Button x:Name="ButtonAddVariable" Content="Add" HorizontalAlignment="Left" Height="42" Margin="490,254,0,0" VerticalAlignment="Top" Width="90" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonDischarge_Click"/>
+                    <Button x:Name="ButtonRemoveVariable" Content="Remove" HorizontalAlignment="Left" Height="42" Margin="592,254,0,0" VerticalAlignment="Top" Width="90" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonDischarge_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -68,7 +68,6 @@ namespace Frontend
             }
         }
 
-
         private PLCConfig CreatePlcConfigObjectWithInputData()
         {
             PLCConfig plcConfig = new PLCConfig();
@@ -109,18 +108,22 @@ namespace Frontend
             private bool CheckInput()
             {
                 bool validInputs = true;
+                bool validInputsMem = true;
                 string errorMessage;
-                
+                //TODO
                 validInputs &= ValidateInput.CheckIfPLCNameInputIsValid(TextBoxPLCName.Text, out errorMessage);
-                if(validInputs){MessageBox.Show(errorMessage,"ERROR PLC NAME");}
-                validInputs &= ValidateInput.CheckIFStringIsValidIPAdress(TextBoxIPAddress.Text, out errorMessage);
-                if (validInputs) { MessageBox.Show(errorMessage, "ERROR IP ADRESS"); }
+                if(!validInputs){MessageBox.Show(errorMessage,"ERROR PLC NAME");}
+                validInputsMem = ValidateInput.CheckIFStringIsValidIPAdress(TextBoxIPAddress.Text, out errorMessage);
+                if (!validInputsMem) { MessageBox.Show(errorMessage, "ERROR IP ADRESS"); }
+                validInputs &= validInputsMem;
                 validInputs &= ValidateInput.CheckIfIntervalInputIsValid(TextBoxSampleIntervall.Text, out errorMessage);
-                if (validInputs) { MessageBox.Show(errorMessage, "ERROR INTERVALL"); }
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR INTERVALL"); }
+
                 validInputs &= ValidateInput.CheckIfPortInputIsValid(TextBoxPort.Text, out errorMessage);
-                if (validInputs) { MessageBox.Show(errorMessage, "ERROR PORT"); }
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR PORT"); }
+
                 validInputs &= ValidateInput.CheckIfPLCTypeInputIsValid(ComboBoxPlcType.Text, out errorMessage );
-                if (validInputs) { MessageBox.Show(errorMessage, "ERROR PLC TYPE"); }
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR PLC TYPE"); }
 
                 return validInputs;
             }
@@ -191,5 +194,12 @@ namespace Frontend
 
         #endregion
 
+        private void TabControlConfig_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            UpdateListBoxConfigs(ListBoxPLCConfigInVariableTabItem);
+        }
+
+       
+      
     }
 }
