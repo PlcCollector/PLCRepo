@@ -12,6 +12,7 @@ namespace DataObjects
         public int variableId { get; set;  }
         public int dataBlockNr { get; set; }
         public int startByte { get; set; }
+        public int startBit { get; set; }
         public int variableLenght { get; set; }
         public int plcID { get; set; }
         public String type { get; set; }

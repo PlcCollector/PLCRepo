@@ -10,7 +10,7 @@ namespace Frontend
     {
         #region checksConfigPLC
 
-        public static bool  CheckIfPLCNameInputIsValid(string plcName ,out string errorMessage) 
+        public static bool  CheckIfNameInputIsValid(string plcName ,out string errorMessage) 
         {
             errorMessage = string.Empty;
 
@@ -27,6 +27,28 @@ namespace Frontend
             }
 
             return true;
+        }
+
+        public static bool CheckIfValueIsIntegerMaxMin(string integerToConvert, out string errorMessage, int MaxValue, int MinValue)
+        {
+            int resultTryParse;
+            errorMessage = string.Empty;
+            bool isNumber = int.TryParse(integerToConvert, out resultTryParse);
+
+            if (!isNumber)
+            {
+                errorMessage = "Die Eingabe muss aus einer ganzen Zahl bestehen";
+                return false;
+            }
+
+            if (resultTryParse < MinValue || resultTryParse > MaxValue)   
+            {
+                errorMessage = "Die eingegebene Zahl befindet sich außerhalb des wählbaren Bereichs ";
+                return false;
+            }
+
+            return true;
+
         }
 
         public static bool CheckIFStringIsValidIPAdress(string ipAdress, out string errorMessage)
@@ -86,6 +108,7 @@ namespace Frontend
                 errorMessage = "Der Port muss aus einer ganzen Zahl bestehen";
                 return false;
             }
+
             if (resultTryParse <= 0 || resultTryParse > 65535)   // available Ports 0 - 65535
             {
                 errorMessage = "Dieser Port steht nicht zur Verfügung. Es stehen nur Ports von 0 - 65535 zur Verfügung";

@@ -60,7 +60,7 @@ namespace Frontend
         {
             PLCConfig plcConfig = new PLCConfig();
 
-            if (CheckInput())
+            if (CheckPLCConfigInputInPLCConfigItem())
             {
                 plcConfig = CreatePlcConfigObjectWithInputData();
 
@@ -79,6 +79,31 @@ namespace Frontend
             plcConfig.type = ComboBoxPlcType.Text;
 
             return plcConfig;
+        }
+
+        private PLCVariableConfig CreateVariableConfigWithInputData()
+        {
+            PLCVariableConfig variableConfig = new PLCVariableConfig();
+
+            variableConfig.dataBlockNr = Convert.ToInt32(TextBoxDataBlock.Text);
+            variableConfig.type = ComboBoxVariableType.Text;
+            variableConfig.variableLenght = CreateVariableConfigByType(variableConfig.type);
+            //variableConfig.plcID = FindPLCIDByPLCType(ComboBoxVariableType.Text);
+            variableConfig.startByte = Convert.ToInt32(TextBoxStartByte.Text);
+            variableConfig.startBit = Convert.ToInt32(TextboxStartBit.Text);
+            
+
+            return variableConfig;
+
+        }
+
+        private int CreateVariableConfigByType(string variableType)
+        {
+            if (variableType == "real" || variableType == "integer")
+            {
+                return 32;
+            }
+            return 1;
         }
 
         private void FillTheTextBoxesWithTheConfigToChange(ListBoxItem lbItem)
@@ -105,29 +130,53 @@ namespace Frontend
 
             #region ValidCheckFunctions
 
-            private bool CheckInput()
+            private bool CheckPLCConfigInputInPLCConfigItem()
             {
                 bool validInputs = true;
                 bool validInputsMem = true;
                 string errorMessage;
-                //TODO
-                validInputs &= ValidateInput.CheckIfPLCNameInputIsValid(TextBoxPLCName.Text, out errorMessage);
+
+                validInputsMem = ValidateInput.CheckIfNameInputIsValid(TextBoxPLCName.Text, out errorMessage);
                 if(!validInputs){MessageBox.Show(errorMessage,"ERROR PLC NAME");}
-                validInputsMem = ValidateInput.CheckIFStringIsValidIPAdress(TextBoxIPAddress.Text, out errorMessage);
-                if (!validInputsMem) { MessageBox.Show(errorMessage, "ERROR IP ADRESS"); }
                 validInputs &= validInputsMem;
-                validInputs &= ValidateInput.CheckIfIntervalInputIsValid(TextBoxSampleIntervall.Text, out errorMessage);
+
+                validInputsMem = ValidateInput.CheckIFStringIsValidIPAdress(TextBoxIPAddress.Text, out errorMessage);
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR IP ADRESS"); }
+                validInputs &= validInputsMem;
+
+                validInputsMem = ValidateInput.CheckIfIntervalInputIsValid(TextBoxSampleIntervall.Text, out errorMessage);
                 if (!validInputs) { MessageBox.Show(errorMessage, "ERROR INTERVALL"); }
+                validInputs &= validInputsMem;
 
-                validInputs &= ValidateInput.CheckIfPortInputIsValid(TextBoxPort.Text, out errorMessage);
+                validInputsMem = ValidateInput.CheckIfPortInputIsValid(TextBoxPort.Text, out errorMessage);
                 if (!validInputs) { MessageBox.Show(errorMessage, "ERROR PORT"); }
+                validInputs &= validInputsMem;
 
-                validInputs &= ValidateInput.CheckIfPLCTypeInputIsValid(ComboBoxPlcType.Text, out errorMessage );
+                validInputsMem = ValidateInput.CheckIfPLCTypeInputIsValid(ComboBoxPlcType.Text, out errorMessage);
                 if (!validInputs) { MessageBox.Show(errorMessage, "ERROR PLC TYPE"); }
+                validInputs &= validInputsMem;
 
                 return validInputs;
             }
 
+            private bool CheckVariableConfigInputInVariableConfigItem()
+            {
+                bool validInputs = true;
+                bool validInputsMem = true;
+                string errorMessage;
+
+                validInputsMem = ValidateInput.CheckIfNameInputIsValid(TextBoxVariableName.Text, out errorMessage);
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR VARIABLE NAME"); }
+                validInputs &= validInputsMem;
+
+                validInputsMem = ValidateInput.CheckIfValueIsIntegerMaxMin(TextBoxDataBlock.Text, out errorMessage, 500, 0);
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR DB INPUT"); }
+                validInputs &= validInputsMem;
+
+                //TODO
+
+                return validInputs;
+            }
 
             #endregion
 
@@ -139,7 +188,7 @@ namespace Frontend
         {
             PLCConfig plcConfig ;
 
-            if (CheckInput())
+            if (CheckPLCConfigInputInPLCConfigItem())
             {
                 plcConfig = CreatePlcConfigObjectWithInputData();
 
@@ -178,18 +227,44 @@ namespace Frontend
             
         }
 
+        #region ButtonsVariableConfigTabItem
+
+        private void ButtonAddVariable_Click(object sender, RoutedEventArgs e)
+        {
+            PLCConfig plcConfig = new PLCConfig();
+
+            if (selectedItemPLCConfigVariableConfigTabItem == null)
+            {
+                MessageBox.Show("Bitte Wählen sie eine PLC aus", "Fehler PLC auswahl");
+                return;
+            }
+
+            // CheckVariableConfigInVariableConfigItem();
+            // fill VarConfig
+            // Write Config to DB
+            // Update Listbox
+
+        }
+
+        private void ButtonRemoveVariable_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
         #endregion
 
         #region Listboxes
 
-        private void ListBoxPLCConfigInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            selectedItemPLCConfigVariableConfigTabItem = (ListBoxItem)ListBoxPLCConfigInVariableTabItem.SelectedItem; 
-        }
-
         private void ListBoxConfigs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedItemPLCConfigConfigTabItem = (ListBoxItem)ListBoxConfigs.SelectedItem;
+        }
+
+        private void ListBoxPLCConfigInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedItemPLCConfigVariableConfigTabItem = (ListBoxItem)ListBoxPLCConfigInVariableTabItem.SelectedItem;
         }
 
         #endregion
@@ -198,6 +273,13 @@ namespace Frontend
         {
             UpdateListBoxConfigs(ListBoxPLCConfigInVariableTabItem);
         }
+
+        private void ListBoxVariablesInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
 
        
       

@@ -9,7 +9,7 @@
                 <GradientStop Color="#FFC9C0C0" Offset="0.996"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TabControl x:Name="TabControlConfig" HorizontalAlignment="Center" Height="362" Margin="0" VerticalAlignment="Center" Width="719" SizeChanged="TabControlConfig_SizeChanged" >
+        <TabControl x:Name="TabControlConfig" HorizontalAlignment="Center" Height="362" Margin="0" VerticalAlignment="Center" Width="719" SizeChanged="TabControlConfig_SizeChanged" SelectionChanged="TabControlConfig_SelectionChanged" >
             <TabControl.Background>
                 <ImageBrush/>
             </TabControl.Background>
@@ -50,9 +50,14 @@
                     <TextBox x:Name="TextboxStartBit" HorizontalAlignment="Left" Height="28" Margin="385,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49"/>
                     <Label x:Name="LabelStartbyte" Content="Byte" HorizontalAlignment="Left" Height="33" Margin="329,128,0,0" VerticalAlignment="Top" Width="49"/>
                     <Label x:Name="LabelStartBit" Content="Bit" HorizontalAlignment="Left" Height="33" Margin="382,128,0,0" VerticalAlignment="Top" Width="49"/>
-                    <ListBox x:Name="ListBoxPLCConfigInVariableTabItem_Copy" Margin="490,55,27,76" SelectionChanged="ListBoxPLCConfigInVariableTabItem_SelectionChanged"/>
-                    <Button x:Name="ButtonAddVariable" Content="Add" HorizontalAlignment="Left" Height="42" Margin="490,254,0,0" VerticalAlignment="Top" Width="90" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonDischarge_Click"/>
-                    <Button x:Name="ButtonRemoveVariable" Content="Remove" HorizontalAlignment="Left" Height="42" Margin="592,254,0,0" VerticalAlignment="Top" Width="90" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonDischarge_Click"/>
+                    <ListBox x:Name="ListBoxVariablesInVariableTabItem" Margin="490,55,27,76" SelectionChanged="ListBoxVariablesInVariableTabItem_SelectionChanged"/>
+                    <Button x:Name="ButtonAddVariable" Content="Add" HorizontalAlignment="Left" Height="42" Margin="490,254,0,0" VerticalAlignment="Top" Width="90" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonAddVariable_Click"/>
+                    <Button x:Name="ButtonRemoveVariable" Content="Remove" HorizontalAlignment="Left" Height="42" Margin="592,254,0,0" VerticalAlignment="Top" Width="90" Background="#FF98A3EC" FontFamily="Segoe Print" Click="ButtonRemoveVariable_Click"/>
+                    <Label x:Name="LabelHeaderLBPLC" Content="PLC" HorizontalAlignment="Left" Height="33" Margin="91,22,0,0" VerticalAlignment="Top" Width="49" FontSize="16"/>
+                    <Label x:Name="LabelHeaderLBVariables" Content="VARIABLES" HorizontalAlignment="Left" Height="33" Margin="532,22,0,0" VerticalAlignment="Top" Width="110" FontSize="16"/>
+                    <ComboBox x:Name="ComboBoxVariableType" Height="25" Margin="272,242,0,0" VerticalAlignment="Top" Width="162" HorizontalAlignment="Left" FontWeight="Bold"/>
+                    <Label x:Name="LabelVariableType" Content="Variable Type" HorizontalAlignment="Left" Height="33" Margin="277,210,0,0" VerticalAlignment="Top" Width="101"/>
+
                 </Grid>
             </TabItem>
         </TabControl>
