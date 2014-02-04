@@ -129,6 +129,18 @@ namespace Frontend
             return true;
         }
 
+        public static bool CheckIfVariableTypeInputIsValid(string plcVariableType, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(plcVariableType))
+            {
+                errorMessage = "Es wurde kein Variablen-Typ ausgewählt";
+                return false;
+            }
+            return true;
+        }
+
         #endregion
 
 

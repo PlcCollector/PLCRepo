@@ -37,6 +37,10 @@ namespace Frontend
             UpdateListBoxConfigs(ListBoxConfigs);
             ComboBoxPlcType.Items.Add("Siemens 300");
             ComboBoxPlcType.Items.Add("Simulator");
+
+            ComboBoxVariableType.Items.Add("INT32");
+            ComboBoxVariableType.Items.Add("REAL");
+            ComboBoxVariableType.Items.Add("BOOL");
         }
 
         #region private functions
@@ -44,6 +48,7 @@ namespace Frontend
         private void UpdateListBoxConfigs(ListBox ListBox)
         {
             listOfPlcConfig = dbHandler.GetListOfPLCConfigurations();
+            ListBox.Items.Clear();
 
             foreach (PLCConfig plcConfig in listOfPlcConfig)
             {
@@ -173,6 +178,17 @@ namespace Frontend
                 if (!validInputs) { MessageBox.Show(errorMessage, "ERROR DB INPUT"); }
                 validInputs &= validInputsMem;
 
+                validInputsMem = ValidateInput.CheckIfValueIsIntegerMaxMin(TextBoxStartByte.Text, out errorMessage, 200, 0);
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR DB startbyte INPUT"); }
+                validInputs &= validInputsMem;
+
+                validInputsMem = ValidateInput.CheckIfValueIsIntegerMaxMin(TextboxStartBit.Text, out errorMessage, 7, 0);
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR DB startbit INPUT"); }
+                validInputs &= validInputsMem;
+
+                validInputsMem = ValidateInput.CheckIfVariableTypeInputIsValid(ComboBoxVariableType.Text, out errorMessage);
+                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR Variable-Typ INPUT"); }
+                validInputs &= validInputsMem;
                 //TODO
 
                 return validInputs;
@@ -239,8 +255,11 @@ namespace Frontend
                 return;
             }
 
-            // CheckVariableConfigInVariableConfigItem();
-            // fill VarConfig
+            if (CheckVariableConfigInputInVariableConfigItem())
+            { 
+            
+            }
+            // fillVarConfig()
             // Write Config to DB
             // Update Listbox
 
@@ -271,10 +290,16 @@ namespace Frontend
 
         private void TabControlConfig_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            
             UpdateListBoxConfigs(ListBoxPLCConfigInVariableTabItem);
         }
 
         private void ListBoxVariablesInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TabControlConfig_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

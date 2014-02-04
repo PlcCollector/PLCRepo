@@ -16,5 +16,16 @@ namespace DataObjects
         public int variableLenght { get; set; }
         public int plcID { get; set; }
         public String type { get; set; }
+
+        public PLCVariableConfig()
+        { 
+        
+        }
+
+        public PLCVariableConfig(string variableName, int dataBlockNr, int startByte, int startBit)
+        { 
+            //write values to the memvars
+        
+        }
     }
 }
