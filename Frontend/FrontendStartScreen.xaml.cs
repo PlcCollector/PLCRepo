@@ -19,7 +19,7 @@ namespace Frontend
     /// </summary>
     public partial class FrontendStartScreen : Window
     {
-        private Config configWindow;
+        
        
         public FrontendStartScreen()
         {
@@ -27,18 +27,11 @@ namespace Frontend
         }
 
         private void ButtonConfig_Click(object sender, RoutedEventArgs e)
-        {         
+        {                  
+            Config configWindow = new Config();
 
-            if (configWindow == null )
-            {
-                //TODO Window singelton***********************
-                configWindow = new Config();
-            }
-            else
-            {
-                MessageBox.Show("Das Config fenster ist bereits geöffnet", "INFO");
-            }
-            configWindow.Show();
+            //Show Dialog is used if you want to lock the parent window
+            configWindow.ShowDialog();
             
         }
     }

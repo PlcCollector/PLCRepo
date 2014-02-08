@@ -141,24 +141,26 @@ namespace Frontend
                 bool validInputsMem = true;
                 string errorMessage;
 
+
+
                 validInputsMem = ValidateInput.CheckIfNameInputIsValid(TextBoxPLCName.Text, out errorMessage);
-                if(!validInputs){MessageBox.Show(errorMessage,"ERROR PLC NAME");}
+                if (!validInputsMem) { MessageBox.Show(errorMessage, "ERROR PLC NAME"); }
                 validInputs &= validInputsMem;
 
                 validInputsMem = ValidateInput.CheckIFStringIsValidIPAdress(TextBoxIPAddress.Text, out errorMessage);
-                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR IP ADRESS"); }
+                if (!validInputsMem) { MessageBox.Show(errorMessage, "ERROR IP ADRESS"); }
                 validInputs &= validInputsMem;
 
                 validInputsMem = ValidateInput.CheckIfIntervalInputIsValid(TextBoxSampleIntervall.Text, out errorMessage);
-                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR INTERVALL"); }
+                if (!validInputsMem) { MessageBox.Show(errorMessage, "ERROR INTERVALL"); }
                 validInputs &= validInputsMem;
 
                 validInputsMem = ValidateInput.CheckIfPortInputIsValid(TextBoxPort.Text, out errorMessage);
-                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR PORT"); }
+                if (!validInputsMem) { MessageBox.Show(errorMessage, "ERROR PORT"); }
                 validInputs &= validInputsMem;
 
                 validInputsMem = ValidateInput.CheckIfPLCTypeInputIsValid(ComboBoxPlcType.Text, out errorMessage);
-                if (!validInputs) { MessageBox.Show(errorMessage, "ERROR PLC TYPE"); }
+                if (!validInputsMem) { MessageBox.Show(errorMessage, "ERROR PLC TYPE"); }
                 validInputs &= validInputsMem;
 
                 return validInputs;

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Frontend.Config"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Config" Height="418" Width="747" MinWidth="747" MinHeight="418" MaxWidth="747" MaxHeight="418" ResizeMode="NoResize">
+        Title="Config" Height="418" Width="747" MinWidth="747" MinHeight="418" MaxWidth="747" MaxHeight="418" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid MinHeight="296" MinWidth="590">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
