@@ -32,6 +32,7 @@ namespace Frontend
 
             //Show Dialog is used if you want to lock the parent window
             configWindow.ShowDialog();
+            //comment
             
         }
     }
