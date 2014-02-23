@@ -325,6 +325,11 @@ namespace DBHandler
             return loadedPLCConfig;
         }
 
+        /// <summary>
+        /// search all variables by plc Id and returns a list of PLC Variable Configs
+        /// </summary>
+        /// <param name="plcID"></param>
+        /// <returns>Returns a list of PLC Variables</returns>
         public List<PLCVariableConfig> GetListOfPLCVariables(int plcID)
         {
             List<PLCVariableConfig> listOfPLCVariables = new List<PLCVariableConfig>();

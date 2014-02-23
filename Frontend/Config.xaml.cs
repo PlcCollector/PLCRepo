@@ -24,6 +24,7 @@ namespace Frontend
     {
         private PLCDBHandler dbHandler;
         private List<PLCConfig> listOfPlcConfig;
+        private List<PLCVariableConfig> currentListOfPLCVariables;
         private bool IsConfigForUpdate = false;
         private ListBoxItem selectedItemPLCConfigConfigTabItem;
         private ListBoxItem selectedItemPLCConfigVariableConfigTabItem;
@@ -34,7 +35,7 @@ namespace Frontend
         {
             InitializeComponent();
             dbHandler = new PLCDBHandler();
-            UpdateListBoxConfigs(ListBoxConfigs);
+            UpdateListBoxConfigs(ListBoxPLCConfigs);
             ComboBoxPlcType.Items.Add("Siemens 300");
             ComboBoxPlcType.Items.Add("Simulator");
 
@@ -57,6 +58,22 @@ namespace Frontend
                 lbItem.Tag = plcConfig.plcID;
                 ListBox.Items.Add(lbItem);
             
+            }
+
+        }
+
+        private void UpdateListBoxPLCVariables(ListBox ListBox)
+        { 
+            int selectedPLcId = Convert.ToInt32(((ListBoxItem)ListBoxPLCConfigInVariableTabItem.SelectedItem).Tag);
+            currentListOfPLCVariables = dbHandler.GetListOfPLCVariables(selectedPLcId);
+            ListBox.Items.Clear();
+
+            foreach (PLCVariableConfig plcVariable in currentListOfPLCVariables)
+            {
+                ListBoxItem lbItem = new ListBoxItem();
+                lbItem.Content = plcVariable.variableName;
+                lbItem.Tag = plcVariable.variableId;
+                ListBox.Items.Add(lbItem);
             }
 
         }
@@ -92,11 +109,10 @@ namespace Frontend
 
             variableConfig.dataBlockNr = Convert.ToInt32(TextBoxDataBlock.Text);
             variableConfig.type = ComboBoxVariableType.Text;
-            variableConfig.variableLenght = CreateVariableConfigByType(variableConfig.type);
-            //variableConfig.plcID = FindPLCIDByPLCType(ComboBoxVariableType.Text);
+            variableConfig.variableLenght = CreateVariableConfigByType(variableConfig.type);           
+            variableConfig.plcID = Convert.ToInt32(((ListBoxItem)ListBoxPLCConfigInVariableTabItem.SelectedItem).Tag);
             variableConfig.startByte = Convert.ToInt32(TextBoxStartByte.Text);
             variableConfig.startBit = Convert.ToInt32(TextboxStartBit.Text);
-            
 
             return variableConfig;
 
@@ -232,7 +248,7 @@ namespace Frontend
         private void ButtonChangeConfig_Click(object sender, RoutedEventArgs e)
         {
             //Check if lbItem is not null
-            FillTheTextBoxesWithTheConfigToChange((ListBoxItem)ListBoxConfigs.SelectedItem);
+            FillTheTextBoxesWithTheConfigToChange((ListBoxItem)ListBoxPLCConfigs.SelectedItem);
 
             IsConfigForUpdate = true;
             //todo
@@ -250,6 +266,7 @@ namespace Frontend
         private void ButtonAddVariable_Click(object sender, RoutedEventArgs e)
         {
             PLCConfig plcConfig = new PLCConfig();
+            PLCVariableConfig varConfig = new PLCVariableConfig();
 
             if (selectedItemPLCConfigVariableConfigTabItem == null)
             {
@@ -258,8 +275,8 @@ namespace Frontend
             }
 
             if (CheckVariableConfigInputInVariableConfigItem())
-            { 
-            
+            {
+                varConfig = CreateVariableConfigWithInputData();
             }
             // fillVarConfig()
             // Write Config to DB
@@ -278,14 +295,15 @@ namespace Frontend
 
         #region Listboxes
 
-        private void ListBoxConfigs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBoxPLCConfigs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedItemPLCConfigConfigTabItem = (ListBoxItem)ListBoxConfigs.SelectedItem;
+            selectedItemPLCConfigConfigTabItem = (ListBoxItem)ListBoxPLCConfigs.SelectedItem;
         }
 
         private void ListBoxPLCConfigInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedItemPLCConfigVariableConfigTabItem = (ListBoxItem)ListBoxPLCConfigInVariableTabItem.SelectedItem;
+            UpdateListBoxPLCVariables(ListBoxVariablesInVariableTabItem);
         }
 
         #endregion
@@ -298,7 +316,7 @@ namespace Frontend
 
         private void ListBoxVariablesInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+           
         }
 
         private void TabControlConfig_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -306,6 +324,7 @@ namespace Frontend
 
         }
 
+      
 
 
        
