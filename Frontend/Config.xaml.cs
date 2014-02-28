@@ -48,7 +48,8 @@ namespace Frontend
 
         private void UpdateListBoxConfigs(ListBox ListBox)
         {
-            listOfPlcConfig = dbHandler.GetListOfPLCConfigurations();
+            List<PLCConfig> listOfPlcConfig = dbHandler.GetListOfPLCConfigurations();
+            
             ListBox.Items.Clear();
 
             foreach (PLCConfig plcConfig in listOfPlcConfig)
@@ -230,13 +231,14 @@ namespace Frontend
                 {
                      dbHandler.UpdatePLCConfigInDB(loadedPLCConfigFromDB);
                      IsConfigForUpdate = false;
+                     
                 }
                 else
                 {
                     dbHandler.WritePLCConfigToDB(plcConfig);
                 }
             }
-
+            UpdateListBoxConfigs(ListBoxPLCConfigs);
         }
 
         private void ButtonDischarge_Click(object sender, RoutedEventArgs e)
@@ -276,8 +278,16 @@ namespace Frontend
 
             if (CheckVariableConfigInputInVariableConfigItem())
             {
-                varConfig = CreateVariableConfigWithInputData();
+                //if (!CheckIfVariableAlreadyExists())
+                //{
+                //    varConfig = CreateVariableConfigWithInputData();
+                //}
+                //else 
+                //{
+                //    MessageBox.Show("Die Variable existiert bereits. Bitte ändern sie den Namen der Variable", "Fehler Variablen Name");
+                //}
             }
+            //checkIfVariableAlreaedyExists()
             // fillVarConfig()
             // Write Config to DB
             // Update Listbox
@@ -311,7 +321,7 @@ namespace Frontend
         private void TabControlConfig_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             
-            UpdateListBoxConfigs(ListBoxPLCConfigInVariableTabItem);
+            UpdateListBoxConfigs(ListBoxPLCConfigs);
         }
 
         private void ListBoxVariablesInVariableTabItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -322,6 +332,11 @@ namespace Frontend
         private void TabControlConfig_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void TabItemVariableConfig_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            UpdateListBoxConfigs(ListBoxPLCConfigInVariableTabItem);
         }
 
       

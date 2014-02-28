@@ -361,6 +361,20 @@ namespace DBHandler
             return listOfPLCVariables;
         }
 
+        public bool GetPLCVariableByName(string Name)
+        {
+            //TODO
+            //MySqlCommand command = connection.CreateCommand();
+            //command.CommandText = "SELECT* FROM plcvariables WHERE @plcID = plcid";
+            //command.Parameters.Add("@plcID", MySqlDbType.Int32).Value = plcID;
+
+            //MySqlDataReader Reader;
+
+            //this.OpenConnection();
+            //Reader = command.ExecuteReader();
+            return true;
+        }
+
         public bool checkIfCollectorIsAlreadyUsed(int collectorID, int plcID)
         {
             ulong alreadyActive;

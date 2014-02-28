@@ -39,7 +39,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="TabItemVariableConfig" Header="Variable Config" Background="#FFC3BBBD" FontFamily="Segoe Print">
+            <TabItem x:Name="TabItemVariableConfig" Header="Variable Config" Background="#FFC3BBBD" FontFamily="Segoe Print" SizeChanged="TabItemVariableConfig_SizeChanged">
                     <Grid>
                     <ListBox x:Name="ListBoxPLCConfigInVariableTabItem" Margin="21,55,496,29" SelectionChanged="ListBoxPLCConfigInVariableTabItem_SelectionChanged"/>
                     <TextBox x:Name="TextBoxVariableName" HorizontalAlignment="Left" Height="28" Margin="272,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159"/>
