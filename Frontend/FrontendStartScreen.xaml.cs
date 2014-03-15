@@ -35,5 +35,12 @@ namespace Frontend
             //comment
             
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            GraphConfig graphConfig = new GraphConfig();
+
+            graphConfig.ShowDialog();
+        }
     }
 }

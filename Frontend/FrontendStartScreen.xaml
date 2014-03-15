@@ -21,7 +21,7 @@
         </Grid.Background>
         <Button x:Name="ButtonConfig" Content="Config" HorizontalAlignment="Left" Height="84" Margin="66,55,0,0" VerticalAlignment="Top" Width="182" Background="#FF98A3EC" RenderTransformOrigin="0.5,0.5" BorderThickness="3" FontFamily="Segoe Print" FontSize="16" FontWeight="Bold" Click="ButtonConfig_Click" ToolTip="Öffnet die PLC und Variablen Konfiguration"/>
         <Button Content="XY-Graph" HorizontalAlignment="Left" Height="84" Margin="335,55,0,0" VerticalAlignment="Top" Width="182" Background="#FF98A3EC" RenderTransformOrigin="0.5,0.5" BorderThickness="3" FontFamily="Segoe Print" FontSize="16" FontWeight="Bold"/>
-        <Button Content="HUGO" HorizontalAlignment="Left" Height="84" Margin="607,55,0,0" VerticalAlignment="Top" Width="182" Background="#FF98A3EC" RenderTransformOrigin="0.5,0.5" BorderThickness="3" FontFamily="Segoe Print" FontSize="16" FontWeight="Bold"/>
+        <Button Content="Config Graph" HorizontalAlignment="Left" Height="84" Margin="66,167,0,0" VerticalAlignment="Top" Width="182" Background="#FF98A3EC" RenderTransformOrigin="0.5,0.5" BorderThickness="3" FontFamily="Segoe Print" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
