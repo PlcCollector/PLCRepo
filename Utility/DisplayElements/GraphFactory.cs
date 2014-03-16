@@ -61,30 +61,100 @@ namespace Utility.DisplayElements
             return newChart;
         }
 
+        #region sets
+
         public void SetColorSheme()
         {
+            
         }
 
         public void SetStyle()
         {
+
         }
 
         public void SetData()
         {
         }
 
+        #endregion
 
-
-        private void DoColoring()
-        {
-        }
-
-        private void DoStyling()
-        {
-        }
-
+       
+       
         private void CreateData()
         {
         }
+
+        #region ***********Do Coloring****************  
+ 
+        private void DoColoring()
+        {
+            switch (colorScheme)
+            {
+                case "green":
+                    this.DoColoringGreen();
+                    break;
+                case "blue":
+                    this.DoColoringBlue();
+                    break;
+                case "default":
+                    this.DoColoringDefault();
+                    break;
+            }
+
+        }
+
+
+        private void DoColoringGreen()
+        { 
+        
+        }
+
+        private void DoColoringBlue()
+        {
+        
+        }
+
+        private void DoColoringDefault()
+        { 
+        
+        }
+        #endregion
+
+        #region ************Do Styling****************
+
+        private void DoStyling()
+        {
+            switch (style)
+            {
+                case "Lines":
+                    this.DoStylingLines();
+                    break;
+                case "Bar":
+                    this.DoStylingBar();
+                    break;
+                case "default":
+                    this.DoStylingDefault();
+                    break;
+            }
+
+        }
+
+        private void DoStylingLines()
+        { 
+        
+        }
+
+        private void DoStylingBar()
+        { 
+        
+        }
+
+        private void DoStylingDefault()
+        {
+
+        }
+
+        #endregion
     }
 }
