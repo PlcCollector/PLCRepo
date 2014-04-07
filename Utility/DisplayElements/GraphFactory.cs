@@ -75,6 +75,7 @@ namespace Utility.DisplayElements
 
         public void SetData()
         {
+
         }
 
         #endregion
@@ -83,6 +84,7 @@ namespace Utility.DisplayElements
        
         private void CreateData()
         {
+
         }
 
         #region ***********Do Coloring****************  
@@ -107,7 +109,7 @@ namespace Utility.DisplayElements
 
         private void DoColoringGreen()
         { 
-        
+            
         }
 
         private void DoColoringBlue()
@@ -158,3 +160,31 @@ namespace Utility.DisplayElements
         #endregion
     }
 }
+
+  //          ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+  //          Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+  //          Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+  //          Chart chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+  //          DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 2D);
+  //          DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 3D);
+
+  //          chartArea1.Name = "ChartArea1";
+  //          this.blub2.ChartAreas.Add(chartArea1);
+  //          legend1.Name = "Legend1";
+  //          this.blub2.Legends.Add(legend1);           
+  //          chart1.Location = new System.Drawing.Point(93, 69);
+  //          this.blub2.Name = "chart1";
+  //          series1.ChartArea = "ChartArea1";
+  //          series1.Legend = "Legend1";
+  //          series1.Name = "Series1";
+  //          series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+  //         // series1.Points.Add(dataPoint1);
+  //         // series1.Points.Add(dataPoint3);
+  //          this.blub2.Series.Add(series1);
+  //          chart1.Size = new System.Drawing.Size(8, 8);
+  //          this.blub2.TabIndex = 0;
+  //          this.blub2.Text = "chart1";
+  //          chart1.Visible = true;
+
+  //          return chart1;
+        

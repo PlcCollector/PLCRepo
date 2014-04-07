@@ -42,5 +42,12 @@ namespace Frontend
 
             graphConfig.ShowDialog();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Graphic graphic = new Graphic();
+
+            graphic.ShowDialog();
+        }
     }
 }
