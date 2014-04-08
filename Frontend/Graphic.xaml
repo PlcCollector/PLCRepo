@@ -8,10 +8,11 @@
     </Window.Effect>
     <Grid>
         
-        <WindowsFormsHost x:Name="test2" HorizontalAlignment="Left" Height="670" Margin="35,54,0,0" VerticalAlignment="Top" Width="1038">
-            <wf:Chart x:Name="blub2" BackColor="Aqua" />
+        <WindowsFormsHost x:Name="test2" HorizontalAlignment="Left" Height="628" Margin="35,54,0,0" VerticalAlignment="Top" Width="1038">
+            <wf:Chart x:Name="chartWindow" BackColor="LightGreen" />
         </WindowsFormsHost>
-        
+        <Button Content="Export" HorizontalAlignment="Left" Height="50" Margin="805,693,0,0" VerticalAlignment="Top" Width="268" Background="#FF98A3EC" RenderTransformOrigin="0.5,0.5" BorderThickness="3" FontFamily="Segoe Print" FontSize="16" FontWeight="Bold"/>
+
         <Grid.ColumnDefinitions>
         <ColumnDefinition Width="554*"/>
         <ColumnDefinition Width="7*"/>

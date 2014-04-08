@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
@@ -132,6 +133,10 @@
     <ProjectReference Include="..\DBHandler\DBHandler.csproj">
       <Project>{bffc2da6-3c57-40b9-a390-6279703cfe90}</Project>
       <Name>DBHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{8e4e8c7f-d582-459a-b24c-283ba75a3a65}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,7 +11,7 @@ using DataObjects;
 
 namespace Utility.DisplayElements
 {
-    class GraphFactory
+    public class GraphFactory
     {
         private Chart createdChart;
 
@@ -44,11 +44,14 @@ namespace Utility.DisplayElements
         private Chart CreateDefaultChart()
         {
             Chart newChart = new Chart();
-            newChart.Size = new System.Drawing.Size(8, 8);
-            newChart.TabIndex = 0;
-            newChart.Visible = true;
+            //newChart.Size = new System.Drawing.Size(8, 8);
+            //newChart.TabIndex = 0;
+            //newChart.Visible = true;
+            //newChart.BackColor = System.Drawing.Color.Red;
+            //newChart.Location = new System.Drawing.Point(93, 69);
 
             ChartArea chartArea = new ChartArea();
+            chartArea.BackColor = System.Drawing.Color.Beige;
             chartArea.Name = "ChartArea1";
             newChart.ChartAreas.Add(chartArea);
 
@@ -59,6 +62,11 @@ namespace Utility.DisplayElements
             Series series1 = new Series();
 
             return newChart;
+        }
+
+        public Chart GiveMeATestChart()
+        {
+            return CreateDefaultChart();
         }
 
         #region sets

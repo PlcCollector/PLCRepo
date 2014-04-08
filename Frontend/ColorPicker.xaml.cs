@@ -22,7 +22,7 @@ namespace Frontend
     {
         SolidColorBrush mySolidColorBrush = new SolidColorBrush();
 
-        Color color = new Color();
+       // Color color = new Color();
 
         private byte colorRed = 0;
         private byte colorGreen = 0;
@@ -56,7 +56,7 @@ namespace Frontend
         private void createColor()
         {
 
-            mySolidColorBrush.Color = Color.FromArgb(255, colorRed, colorGreen, colorBlue);
+           // mySolidColorBrush.Color = Color.FromArgb(255, colorRed, colorGreen, colorBlue);
 
             rectangleColor.Fill = mySolidColorBrush;
         }
