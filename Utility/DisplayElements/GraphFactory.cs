@@ -55,11 +55,11 @@ namespace Utility.DisplayElements
             chartArea.Name = "ChartArea1";
             newChart.ChartAreas.Add(chartArea);
 
-            Legend legend1 = new Legend();
-            legend1.Name = "Legend1";
-            newChart.Legends.Add(legend1);
+            //Legend legend1 = new Legend();
+            //legend1.Name = "Legend1";
+            //newChart.Legends.Add(legend1);
 
-            Series series1 = new Series();
+            //Series series1 = new Series();
 
             return newChart;
         }
