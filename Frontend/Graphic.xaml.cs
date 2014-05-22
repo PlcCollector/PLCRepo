@@ -37,10 +37,10 @@ namespace Frontend
 
         private void InitGraph()
         {
-            //this.chartWindow = graphFactory.Create();
+            this.chartWindow = graphFactory.Create();
 
-            ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            this.chartWindow.ChartAreas.Add(chartArea1);
+            //ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            //this.chartWindow.ChartAreas.Add(chartArea1);
             //this.currentChart = graphFactory.GiveMeATestChart();
 
             //this.chartWindow = currentChart;
