@@ -48,17 +48,26 @@ namespace Frontend
 
         private void UpdateListBoxConfigs(ListBox ListBox)
         {
-            List<PLCConfig> listOfPlcConfig = dbHandler.GetListOfPLCConfigurations();
-            
-            ListBox.Items.Clear();
-
-            foreach (PLCConfig plcConfig in listOfPlcConfig)
+            try 
             {
-                ListBoxItem lbItem = new ListBoxItem();
-                lbItem.Content = plcConfig.plcName;
-                lbItem.Tag = plcConfig.plcID;
-                ListBox.Items.Add(lbItem);
+                List<PLCConfig> listOfPlcConfig = dbHandler.GetListOfPLCConfigurations();
+           
             
+                ListBox.Items.Clear();
+
+                foreach (PLCConfig plcConfig in listOfPlcConfig)
+                {
+                    ListBoxItem lbItem = new ListBoxItem();
+                    lbItem.Content = plcConfig.plcName;
+                    lbItem.Tag = plcConfig.plcID;
+                    ListBox.Items.Add(lbItem);
+            
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler Datenbankverbindung!!!!!!!! \n" + ex.ToString(), "Fehler Datenbankverbindung");
+                this.Close();
             }
 
         }

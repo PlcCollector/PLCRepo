@@ -73,7 +73,7 @@ namespace Frontend
             TextboxTimeToMinute.Text = minute.ToString();
         }
 
-        private void buttonTimetoMinus_Click(object sender, RoutedEventArgs e)
+        private void buttonTimeToMinus_Click(object sender, RoutedEventArgs e)
         {
             int minute;
 
@@ -96,6 +96,31 @@ namespace Frontend
             colorPicker.ShowDialog();
 
         }
+
+
+        #region valueChanges
+
+        private void TextBoxTimeFromHour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBoxTimeFromHour.Text = CheckIfTextFieldValueIsValidHourValueAndConvertIt(TextBoxTimeFromHour).ToString();
+        }
+
+        private void TextboxTimeFromMinute_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextboxTimeFromMinute.Text = CheckIfTextFieldValueIsValidMinuteValueAndConvertIt(TextboxTimeFromMinute).ToString();
+        }
+
+        private void TextBoxTimeToHour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBoxTimeToHour.Text = CheckIfTextFieldValueIsValidHourValueAndConvertIt(TextBoxTimeToHour).ToString();
+        }
+
+        private void TextboxTimeToMinute_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           TextboxTimeToMinute.Text= CheckIfTextFieldValueIsValidMinuteValueAndConvertIt(TextboxTimeToMinute).ToString();
+        }
+
+        #endregion
 
         #endregion
 
@@ -130,6 +155,36 @@ namespace Frontend
             }
 
             textboxHour.Text = hour.ToString();
+        }
+
+        private int CheckIfTextFieldValueIsValidHourValueAndConvertIt(TextBox textBoxHour)
+        {
+            int number ;
+            
+            bool result = int.TryParse(textBoxHour.Text, out number);
+
+            if (!result || number > 23 || number < 0)
+            {
+                MessageBox.Show("Der eingetragene Wert ist kein gültiger Stundenwert\n Bitte eine Zahl zwischen 0-24 auswählen");
+                return 0;
+            }
+             
+            return number;
+        }
+
+        private int CheckIfTextFieldValueIsValidMinuteValueAndConvertIt(TextBox textBoxHour)
+        {
+            int number;
+
+            bool result = int.TryParse(textBoxHour.Text, out number);
+
+            if (!result || number > 59 || number < 0)
+            {
+                MessageBox.Show("Der eingetragene Wert ist kein gültiger Minutenwert\n Bitte eine Zahl zwischen 0-59 auswählen");
+                return 0;
+            }
+
+            return number;
         }
 
         #endregion

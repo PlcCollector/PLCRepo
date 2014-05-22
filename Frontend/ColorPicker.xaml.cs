@@ -56,7 +56,7 @@ namespace Frontend
         private void createColor()
         {
 
-           // mySolidColorBrush.Color = Color.FromArgb(255, colorRed, colorGreen, colorBlue);
+            mySolidColorBrush.Color = System.Windows.Media.Color.FromArgb(255, colorRed, colorGreen, colorBlue);
 
             rectangleColor.Fill = mySolidColorBrush;
         }

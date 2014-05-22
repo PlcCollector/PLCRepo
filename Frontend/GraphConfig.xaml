@@ -25,16 +25,16 @@
         <Button x:Name="buttoRemoveVariable" Content="REMOVE" HorizontalAlignment="Left" Height="45" Margin="151,327,0,0" VerticalAlignment="Top" Width="115" Background="#FF98A3EC" FontFamily="Segoe Print" />
         <DatePicker HorizontalAlignment="Left" Height="25" Margin="292,221,0,0" VerticalAlignment="Top" Width="148"/>
         <DatePicker HorizontalAlignment="Left" Margin="292,309,0,0" VerticalAlignment="Top" Width="148" SelectedDateFormat="Short"/>
-        <TextBox x:Name="TextBoxTimeFromHour" HorizontalAlignment="Left" Height="23" Margin="292,257,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="47" TextAlignment="Center" MaxLength="2"/>
-        <TextBox x:Name="TextboxTimeFromMinute" HorizontalAlignment="Left" Height="23" Margin="355,257,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="47" TextAlignment="Center" IsUndoEnabled="True" MaxLength="2"/>
+        <TextBox x:Name="TextBoxTimeFromHour" HorizontalAlignment="Left" Height="23" Margin="292,257,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="47" TextAlignment="Center" MaxLength="2" TextChanged="TextBoxTimeFromHour_TextChanged"/>
+        <TextBox x:Name="TextboxTimeFromMinute" HorizontalAlignment="Left" Height="23" Margin="355,257,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="47" TextAlignment="Center" IsUndoEnabled="True" MaxLength="2" TextChanged="TextboxTimeFromMinute_TextChanged"/>
         <Label Content=":" HorizontalAlignment="Left" Height="25" Margin="341,252,0,0" VerticalAlignment="Top" Width="19" FontWeight="Bold" FontSize="14"/>
         <Button x:Name="buttonTimeFromPlus" Content="+" HorizontalAlignment="Left" Height="15" Margin="414,254,0,0" VerticalAlignment="Top" Width="20" FontSize="9" FontWeight="Bold" Background="#FF98A3EC" Click="buttonTimeFromPlus_Click" />
         <Button x:Name="buttonTimeFromMinus" Content="-" HorizontalAlignment="Left" Height="15" Margin="414,268,0,0" VerticalAlignment="Top" Width="20" FontSize="9" Background="#FF98A3EC" FontWeight="Bold" Click="buttonTimeFromMinus_Click" />
-        <TextBox x:Name="TextBoxTimeToHour" HorizontalAlignment="Left" Height="23" Margin="292,344,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="47" TextAlignment="Center" MaxLength="2"/>
-        <TextBox x:Name="TextboxTimeToMinute" HorizontalAlignment="Left" Height="23" Margin="355,344,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="47" TextAlignment="Center" IsUndoEnabled="True" MaxLength="2"/>
+        <TextBox x:Name="TextBoxTimeToHour" HorizontalAlignment="Left" Height="23" Margin="292,344,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="47" TextAlignment="Center" MaxLength="2" TextChanged="TextBoxTimeToHour_TextChanged"/>
+        <TextBox x:Name="TextboxTimeToMinute" HorizontalAlignment="Left" Height="23" Margin="355,344,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="47" TextAlignment="Center" IsUndoEnabled="True" MaxLength="2" TextChanged="TextboxTimeToMinute_TextChanged"/>
         <Label Content=":" HorizontalAlignment="Left" Height="25" Margin="341,339,0,0" VerticalAlignment="Top" Width="19" FontWeight="Bold" FontSize="14"/>
         <Button x:Name="buttonTimeToPlus" Content="+" HorizontalAlignment="Left" Height="15" Margin="414,341,0,0" VerticalAlignment="Top" Width="20" FontSize="9" FontWeight="Bold" Background="#FF98A3EC" Click="buttonTimeToPlus_Click" />
-        <Button x:Name="buttonTimetoMinus" Content="-" HorizontalAlignment="Left" Height="15" Margin="414,355,0,0" VerticalAlignment="Top" Width="20" FontSize="9" Background="#FF98A3EC" FontWeight="Bold" Click="buttonTimetoMinus_Click" />
+        <Button x:Name="buttonTimeToMinus" Content="-" HorizontalAlignment="Left" Height="15" Margin="414,355,0,0" VerticalAlignment="Top" Width="20" FontSize="9" Background="#FF98A3EC" FontWeight="Bold" Click="buttonTimeToMinus_Click" />
         <Label Content="from......." HorizontalAlignment="Left" Height="30" Margin="292,195,0,0" VerticalAlignment="Top" Width="47" FontFamily="Segoe Print"/>
         <Label Content="to......." HorizontalAlignment="Left" Height="30" Margin="292,284,0,0" VerticalAlignment="Top" Width="47" FontFamily="Segoe Print"/>
         <Menu HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="741">

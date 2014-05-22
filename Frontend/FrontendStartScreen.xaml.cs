@@ -29,10 +29,18 @@ namespace Frontend
         private void ButtonConfig_Click(object sender, RoutedEventArgs e)
         {                  
             Config configWindow = new Config();
-
-            //Show Dialog is used if you want to lock the parent window
-            configWindow.ShowDialog();
-            //comment
+           
+                //Show Dialog is used if you want to lock the parent window
+            try
+            {
+                configWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fenster konnte nicht geöffnet werden", "Fehler" );
+            }
+            
+          
             
         }
 
