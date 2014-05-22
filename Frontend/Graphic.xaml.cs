@@ -37,10 +37,19 @@ namespace Frontend
 
         private void InitGraph()
         {
+<<<<<<< HEAD
             this.chartWindow = graphFactory.Create();
 
             //ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             //this.chartWindow.ChartAreas.Add(chartArea1);
+=======
+            graphFactory.Create(ref this.chartWindow);
+            
+            //ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+           
+            //this.chartWindow.ChartAreas.Add(chartArea1);
+            
+>>>>>>> 710c31f1a43d20cde2856c69839081a6e3192af2
             //this.currentChart = graphFactory.GiveMeATestChart();
 
             //this.chartWindow = currentChart;
@@ -75,5 +84,17 @@ namespace Frontend
             //this.chartWindow.Text = "chart1";
 
         }
+
+        private void GraphicGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+           // GraphicGrid.ActualHeight = Convert.ToInt32(GraphicWindow.Height - 120);
+
+            chartWindowGraph.Height = GraphicWindow.Height - 160;
+            chartWindowGraph.Width = GraphicWindow.Width - 100;
+           // GraphicGrid.Height = WpfFormGraphic.
+            //GraphicGrid.Width = GraphicWindow.Width;
+        }
+
+      
     }
 }
